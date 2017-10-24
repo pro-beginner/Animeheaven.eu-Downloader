@@ -7,7 +7,6 @@ Requirments:
 -> pip3 
 -> bs4      :  pip install bs4
 -> requests :  pip install requests
--> re       :  pip install re
 
 now run a command like:
 $python AnimeHeavenDownloader.py <the url of the chosen anime> <selected destination> <starting_episode> <ending_episode>
@@ -21,6 +20,6 @@ copy the same url:
       a sample query would look like,
       $python AnimeHeavenDownloader.py http://animeheaven.eu/i.php?a=Dragon%20Ball%20Super /users/me/Downloads 1 100
      
-Note: Our cuurent implementation does not show the exent of download at each instance of time, but keep pateince the download is taking place, successful dowmnload of each episode is notified. 
+Note: Our current implementation does not show the exent of download at each instance of time, but keep pateince the download is taking place, successful dowmnload of each episode is notified. 
 
 
