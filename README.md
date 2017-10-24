@@ -20,7 +20,7 @@ copy the same url:
       
       a sample query would look like,
       
-      `$python AnimeHeavenDownloader.py http://animeheaven.eu/i.php?a=Dragon%20Ball%20Super /users/me/Downloads 1 100`
+      $python AnimeHeavenDownloader.py http://animeheaven.eu/i.php?a=Dragon%20Ball%20Super /users/me/Downloads 1 10
      
 **Note**: Our current implementation does not show the exent of download at each instance of time, but keep pateince the download is taking place, successful dowmnload of each episode is notified. 
 
