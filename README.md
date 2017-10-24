@@ -3,10 +3,10 @@
 This is a python script to download anime series from the popular website animeheaven.eu.
 
 Requirments:
--> python 3.X
--> pip3 
--> bs4      :  pip install bs4
--> requests :  pip install requests
+* python 3.X
+* pip
+* bs4      :  pip install bs4
+* requests :  pip install requests
 
 now run a command like:
 $python AnimeHeavenDownloader.py <the url of the chosen anime> <selected destination> <starting_episode> <ending_episode>
