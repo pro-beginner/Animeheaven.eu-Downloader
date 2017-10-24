@@ -1,5 +1,7 @@
 # Exit status 1 - Internet Connection or URL Problem
 
+
+
 import requests,bs4,re,sys,os
 import time
 from time import *
@@ -35,7 +37,7 @@ soup=bs4.BeautifulSoup(r.text,"html.parser")
 dpages=soup.select(".infoepbox > a")
 #print(dpages)
 #now iterate over all episode pages
-print("-----------we are downloading "+name_of_the_anime+"from "+starting_ep +" to "+ending_ep+"-----------------------------")
+print("DOWNLOADING "+name_of_the_anime+"from "+starting_ep +" to "+ending_ep+"-----------------------------")
 for i in range(len(dpages)-1,-1,-1):
 
 	if (len(dpages)-i) >= int(starting_ep) and (len(dpages)-i) <= int(ending_ep):
@@ -57,15 +59,15 @@ for i in range(len(dpages)-1,-1,-1):
 		#the 5th script contains my link
 
 		mylink=re.compile(r"href='(.*)'")
-		downlink=mylink.search(str(dlink[4]))[1][:-17]
-		print("Here it is",downlink+"   "+ str(type(downlink)))
+		downlink=mylink.search(str(dlink[4])).group(1)[:-17]
+		#print("Here it is",downlink+"   "+ str(type(downlink)))
 	    
 		t = strftime("%a, %d %b %Y %H:%M:%S", localtime())
 		print(t)
 
 		downloaded=requests.get(downlink)
 
-		print("downloaded requests works !!  ----------------")
+		#print("downloaded requests works !!  ----------------")
 
 		try:
 			downloaded.raise_for_status()
@@ -89,3 +91,5 @@ for i in range(len(dpages)-1,-1,-1):
 	
 	#f_name = name_of_anime+"E"+str(len(dpages)-i)+".mp4"
 	#curl(downlink) --output "f_name"
+
+print("DOWNLOAD COMPLETE")
