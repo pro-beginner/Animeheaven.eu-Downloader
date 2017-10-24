@@ -5,6 +5,7 @@
 import requests,bs4,re,sys,os
 import time
 from time import *
+from tqdm import tqdm
 
 #provide first url
 url=sys.argv[1]
@@ -35,7 +36,7 @@ if not os.path.exists(os.path.dirname(destination)):
 soup=bs4.BeautifulSoup(r.text,"html.parser")
 
 dpages=soup.select(".infoepbox > a")
-#print(dpages)
+print(dpages)
 #now iterate over all episode pages
 print("DOWNLOADING "+name_of_the_anime+"from "+starting_ep +" to "+ending_ep+"-----------------------------")
 for i in range(len(dpages)-1,-1,-1):
@@ -60,14 +61,16 @@ for i in range(len(dpages)-1,-1,-1):
 
 		mylink=re.compile(r"href='(.*)'")
 		downlink=mylink.search(str(dlink[4])).group(1)[:-17]
-		#print("Here it is",downlink+"   "+ str(type(downlink)))
+		print("Here it is   ",downlink+"   ")
 	    
 		t = strftime("%a, %d %b %Y %H:%M:%S", localtime())
 		print(t)
 
 		downloaded=requests.get(downlink)
 
-		#print("downloaded requests works !!  ----------------")
+		#total_size = int(downloaded.headers.get('content-length', 0));
+
+		print("downloaded requests works !!  ----------------")
 
 		try:
 			downloaded.raise_for_status()
@@ -76,8 +79,9 @@ for i in range(len(dpages)-1,-1,-1):
 			continue;
 
 		with open(name_of_the_anime+"Episode "+str(len(dpages)-i)+".mp4","wb") as f:
-			for con in downloaded.iter_content(100000):
-				f.write(con)
+			#for data in tqdm(r.iter_content(32*1024), total=total_size, unit='B', unit_scale=True)
+			for data in downloaded.iter_content(100000):
+				f.write(data)
 
 		print("Downloaded Episode "+str(len(dpages)-i)+".mp4")
 		f.close()
